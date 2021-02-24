@@ -1,0 +1,70 @@
+﻿<div id="footer">
+       
+        <div class="f_bom">
+        <div class="w1200">
+            <div class="f_cont">
+                <ul>
+                    <li style="font-family:'ORATOR10'"><img src="../{ms:global.style/}/images/fc0.png" />08888-8888888</li>
+                    <li class="mid"><img src="../{ms:global.style/}/images/fc1.png" />@JOY</li>
+                    <li><img src="../{ms:global.style/}/images/fc2.png" />在线咨询：946953627</li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="f_attn">
+                <div class="fl follow">关注我们<a href="http://www.weibo.com" target="_blank"><img src="../{ms:global.style/}/images/f_weibo.png" /></a><img src="../{ms:global.style/}/images/f_weixin.png" /></div>
+                <div class="fr copyright">网站版权所有：这是一个仿站模版，如果出现版权问题请联系铭飞进行下架
+                  <a href="http://www.miibeian.gov.cn" target="_blank">赣ICP备888888888号</a> <a href="http://ms.mingsoft.net/" target="_blank">技术支持：铭飞科技</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="online">
+    <a class="on1 s"><img class="img" src="../{ms:global.style/}/images/online1.png" /><span>8888-888</span></a>
+    <a class="on2"><img class="img" src="../{ms:global.style/}/images/online4.png" /><span>
+        <img src="../{ms:global.style/}/images/c1943bcb5b.png" width="124" height="124" /></span></a>
+    <a class="on3 s" href="http://wpa.qq.com/msgrd?v=3&uin=946953627&menu=yes" target="_blank"><img class="img" src="../{ms:global.style/}/images/online2.png" /><span>946953627</span></a>
+    <a class="on4" href="http://www.weibo.com" target="_blank"><img class="img" src="../{ms:global.style/}/images/online3.png" /></a>
+    <a class="top" href="#top"><img class="img" src="../{ms:global.style/}/images/top.png" /></a>
+</div>
+
+<script type="text/javascript">
+$(function(){
+    $('#online .s').hover(function(){
+        $(this).toggleClass('cur');
+    })
+    $('#online .on2').hover(function(){
+        $(this).find('span').fadeToggle();
+    },function(){
+        $(this).find('span').fadeToggle();  
+    })
+})
+</script></body>
+</html>
+
+<script type="text/javascript">
+$(function(){
+    $('#index_part .item').hover(function(){
+        $(this).toggleClass('item_cur');
+    })
+    $('#index_news .item').hover(function(){
+        $(this).toggleClass('item_cur');
+    })
+    $('#index_news cite span').hover(function(){
+        var k = $(this).index();
+        $(this).addClass('on').siblings().removeClass('on');
+        $('#index_news .tab').eq(k).show().siblings().hide();
+    })
+    
+    var num = Math.ceil($('#team_scrol .item').length/4);
+    $('#team_scrol').width(1200*num);
+    $('#index_team cite span').hover(function(){
+        var m = $(this).index();
+        $(this).addClass('on').siblings().removeClass('on');
+        $('#team_scrol').animate({'margin-left':'-'+1200*m+'px'},1000);
+    });
+})
+</script>

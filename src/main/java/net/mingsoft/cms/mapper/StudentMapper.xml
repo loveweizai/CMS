@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.StudentMapper">
+	<resultMap id="BaseResultMap" type="net.mingsoft.cms.model.Student">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="age" jdbcType="INTEGER" property="age" />
+		<result column="sex" jdbcType="VARCHAR" property="sex" />
+		<result column="portrait" jdbcType="VARCHAR" property="portrait" />
+		<result column="major" jdbcType="VARCHAR" property="major" />
+		<result column="position" jdbcType="VARCHAR" property="position" />
+		<result column="motto" jdbcType="VARCHAR" property="motto" />
+		<result column="introduction" jdbcType="VARCHAR" property="introduction" />
+		<result column="school_id" jdbcType="VARCHAR" property="schoolId" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="schoolName" jdbcType="VARCHAR" property="schoolName" />
+	</resultMap>
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 s.id,	s.name,	s.age,	s.sex,	s.portrait,	s.major,	s.position,	s.motto,	s.introduction,	s.create_time,	s.update_time,s.school_id
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />,s1.name as schoolName
+		 FROM student s left join school s1 on s.school_id = s1.id
+		 WHERE s.id = #{id}
+	</select>
+
+	<select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.Student">
+		SELECT
+		<include refid="Base_Column_List" />,s1.name as schoolName
+		FROM student s left join school s1 on s.school_id = s1.id
+		<where>
+			<if test="name != null and name !=''">
+				and s.name like concat('%',#{name},'%')
+			</if>
+			<if test="sex != null and sex !=''">
+				and s.sex = #{sex}
+			</if>
+			<if test="age != null">
+				and s.age = #{age}
+			</if>
+			<if test="schoolId != null">
+				and s.school_id = #{schoolId}
+			</if>
+			<if test="schoolName != null and schoolName !=''">
+				and s1.name like concat('%',#{schoolName},'%')
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteBatchBySelective" parameterType="java.util.List">
+		delete from student
+		where id in
+		<foreach collection="list" item="student" index="no" open="("
+				 separator="," close=")">
+			#{student.id}
+		</foreach>
+	</delete>
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM student
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="net.mingsoft.cms.model.Student">
+		 INSERT INTO student
+ 		(id,name,age,sex,portrait,major,position,motto,introduction,school_id,create_time,update_time)
+		 VALUES 
+ 		(#{id},#{name},#{age},#{sex},#{portrait},#{major},#{position},#{motto},#{introduction},#{schoolId},#{createTime},#{updateTime})
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="net.mingsoft.cms.model.Student">
+		 INSERT INTO student
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="name != null">
+				 name,
+			</if>
+			<if test="age != null">
+				 age,
+			</if>
+			<if test="sex != null">
+				 sex,
+			</if>
+			<if test="portrait != null">
+				 portrait,
+			</if>
+			<if test="schoolId != null">
+				school_id,
+			</if>
+			<if test="major != null">
+				 major,
+			</if>
+			<if test="position != null">
+				 position,
+			</if>
+			<if test="motto != null">
+				 motto,
+			</if>
+			<if test="introduction != null">
+				 introduction,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="name!=null">
+				 #{name},
+			</if>
+			<if test="age!=null">
+				 #{age},
+			</if>
+			<if test="sex!=null">
+				 #{sex},
+			</if>
+			<if test="portrait!=null">
+				 #{portrait},
+			</if>
+			<if test="schoolId!=null">
+				 #{schoolId},
+			</if>
+			<if test="major!=null">
+				 #{major},
+			</if>
+			<if test="position!=null">
+				 #{position},
+			</if>
+			<if test="motto!=null">
+				 #{motto},
+			</if>
+			<if test="introduction!=null">
+				 #{introduction},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.Student">
+		 UPDATE student
+ 		 <set> 
+			<if test="name != null">
+				 name = #{name},
+			</if>
+			<if test="age != null">
+				 age = #{age},
+			</if>
+			<if test="sex != null">
+				 sex = #{sex},
+			</if>
+			<if test="portrait != null">
+				 portrait = #{portrait},
+			</if>
+			<if test="schoolId != null">
+				school_id = #{schoolId},
+			</if>
+			<if test="major != null">
+				 major = #{major},
+			</if>
+			<if test="position != null">
+				 position = #{position},
+			</if>
+			<if test="motto != null">
+				 motto = #{motto},
+			</if>
+			<if test="introduction != null">
+				 introduction = #{introduction},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.Student">
+		 UPDATE student
+		 SET 
+			 name = #{name},
+			 age = #{age},
+			 sex = #{sex},
+			 portrait = #{portrait},
+			 school_id = #{schoolId},
+			 major = #{major},
+			 position = #{position},
+			 motto = #{motto},
+			 introduction = #{introduction},
+			 create_time = #{createTime},
+			 update_time = #{updateTime}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

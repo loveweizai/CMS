@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.CompanyVideoInfoMapper">
+
+	<resultMap id="BaseResultMap" type="net.mingsoft.cms.model.CompanyVideoInfo">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="video_name" jdbcType="VARCHAR" property="videoName" />
+		<result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+		<result column="companyName" jdbcType="VARCHAR" property="companyName" />
+		<result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+		<result column="mobile_video_url" jdbcType="VARCHAR" property="mobileVideoUrl" />
+		<result column="introduce" jdbcType="VARCHAR" property="introduce" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	video_name,	company_code,	video_url,mobile_video_url,	introduce,	create_time,	update_time
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		 SELECT
+			v.id,	v.video_name,	v.company_code,	v.video_url,v.mobile_video_url,	v.introduce,	v.create_time,	v.update_time,s.name as companyName
+		 FROM company_video_info v LEFT JOIN company_structure s ON s.code = v.company_code
+		 WHERE v.id = #{id}
+	</select>
+
+	<select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.CompanyVideoInfo">
+		 SELECT
+			v.id,	v.video_name,	v.company_code,	v.video_url,v.mobile_video_url,	v.introduce,	v.create_time,	v.update_time,s.name as companyName
+		 FROM company_video_info v LEFT JOIN company_structure s ON s.code = v.company_code
+        <where>
+            <if test="videoName != null and videoName !=''">
+                and v.video_name like concat('%',#{videoName},'%')
+            </if>
+            <if test="companyCode != null and companyCode !=''">
+                and v.company_code like concat('%',#{companyCode},'%')
+            </if>
+        </where>
+	</select>
+
+    <delete id="deleteBatchBySelective" parameterType="java.util.List">
+        delete from company_video_info
+        where id in
+        <foreach collection="list" item="company" index="no" open="("
+                 separator="," close=")">
+            #{company.id}
+        </foreach>
+    </delete>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM company_video_info
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="net.mingsoft.cms.model.CompanyVideoInfo">
+		 INSERT INTO company_video_info
+ 		(id,video_name,company_code,address,image_url,video_url,mobile_video_url,introduce,detail,create_time,update_time) 
+		 VALUES 
+ 		(#{id},#{videoName},#{companyCode},#{address},#{imageUrl},#{videoUrl},#{mobileVideoUrl},#{introduce},#{detail},#{createTime},#{updateTime}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="net.mingsoft.cms.model.CompanyVideoInfo">
+		 INSERT INTO company_video_info
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="videoName != null">
+				 video_name,
+			</if>
+			<if test="companyCode != null">
+				 company_code,
+			</if>
+			<if test="videoUrl != null">
+				 video_url,
+			</if>
+			<if test="mobileVideoUrl != null">
+				 mobile_video_url,
+			</if>
+			
+			<if test="introduce != null">
+				 introduce,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="videoName!=null">
+				 #{videoName},
+			</if>
+			<if test="companyCode!=null">
+				 #{companyCode},
+			</if>
+			<if test="videoUrl!=null">
+				 #{videoUrl},
+			</if>
+			<if test="mobileVideoUrl != null">
+				 #{mobileVideoUrl},
+			</if>
+			
+			<if test="introduce!=null">
+				 #{introduce},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.CompanyVideoInfo">
+		 UPDATE company_video_info
+ 		 <set> 
+			<if test="videoName != null">
+				 video_name = #{videoName},
+			</if>
+			<if test="companyCode != null">
+				 company_code = #{companyCode},
+			</if>
+			<if test="videoUrl != null">
+				 video_url = #{videoUrl},
+			</if>
+			<if test="introduce != null">
+				 introduce = #{introduce},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="mobileVideoUrl != null">
+				 mobile_video_url = #{mobileVideoUrl},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.CompanyVideoInfo">
+		 UPDATE company_video_info
+		 SET 
+			 video_name = #{videoName},
+			 company_code = #{companyCode},
+			 video_url = #{videoUrl},
+			 mobile_video_url = #{mobileVideoUrl},
+			 introduce = #{introduce},
+			 detail = #{detail},
+			 create_time = #{createTime},
+			 update_time = #{updateTime}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

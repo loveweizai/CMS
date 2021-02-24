@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+</head>
+<body>
+    <#include "head.htm">
+    <div id="info_list">
+        <div class="pro_cate">
+            <ul class="topcate">
+            	<div class="w1200">
+                    <li class="first "><a href="{ms:global.url/}/59/68/index.html"><img src="../{ms:global.style/}/images/s_843177cf14.png" />公司新闻</a></li>
+                    <li class=" "><a href="{ms:global.url/}/59/69/index.html"><img src="../{ms:global.style/}/images/s_7db22e9417.png" />行业新闻</a></li>
+                    <li class=" "><a href="{ms:global.url/}/59/70/index.html"><img src="../{ms:global.style/}/images/s_e478764d8d.png" />最新动态</a></li>
+                    <div class="clear"></div>
+                </div>
+            </ul>
+            
+            <div class="w1200 subcate">
+                <span class="fr here">您的位置：<a href="{ms:global.url/}">首页</a> &gt; <a href="{ms:field.typelink/}">{ms:field.typetitle/}</a> &gt; <font></font></span>
+            </div>
+        </div>
+        
+    	<div class="w1200">
+        	<div class="ad">
+            	<div class="fl lef">
+                	<div class="img"><a href=""><img src="../{ms:global.style/}/images/ca40942433.jpg" /><span></span></a></div>
+                    <div class="txt"><font></font></div>
+                </div>
+                <div class="fr rig">
+                	<div class="fl s">
+                    	<div class="img"><a href=""><img src="../{ms:global.style/}/images/214fbe0136.jpg" /><span></span></a></div>
+                    	<div class="txt"><font></font></div>
+                    </div>
+                	<div class="fr s">
+                    	<div class="img"><a href=""><img src="../{ms:global.style/}/images/851e71be96.jpg" /><span></span></a></div>
+                    	<div class="txt"><font></font></div>
+                    </div>
+                	<div class="clear"></div>
+                    <div class="blank31"></div>
+                    <div class="b">
+                    	<div class="img"><a href=""><img src="../{ms:global.style/}/images/27d2390721.jpg" /><span></span></a></div>
+                    	<div class="txt"><font></font></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+
+            <div class="info_box">
+                {ms:arclist ispaging=true}
+            	<ul class="item">
+                	<li class="fl img"><a href="[field.link/]"><img src="{ms:global.host/}[field.litpic/]" /><span></span></a></li>
+                    <li class="fl des">
+                    	<div class="des_t"><a href="[field.link/]">[field.title/]</a></div>
+                        <div class="des_brief">[field.descrip/]</div>
+                        <div class="des_txt">[field.typename/]</div>
+                    </li>
+                    <li class="fr time">[field.date fmt=MM-dd/]</li>
+                    <div class="clear"></div>
+                </ul>
+                        	
+                {/ms:arclist}
+                <div class="clear"></div>
+                <div class="blank30"></div>
+
+    			<div id="turn_page">
+                    <a href='{ms:page.pre/}' class='page_button'><</a>&nbsp;
+                    <a href='{ms:page.next/}' class='page_button'>></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <#include "footer.htm">
+</body>
+</html>
+
+<script type="text/javascript">
+$(function(){
+	$('.pro_box ul:not(".big")').hover(function(){
+		$(this).toggleClass('cur');
+	})
+	
+	$('#info_list .item').hover(function(){
+		$(this).toggleClass('item_cur');
+	})
+})
+</script>

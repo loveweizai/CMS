@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.sqlserver.RecInfoMapper">
+
+	<resultMap id="BaseResultMap" type="net.mingsoft.cms.model.RecInfo">
+		<result column="Z0321"  jdbcType="VARCHAR" property="Z0321" />
+		<result column="Z0351"  jdbcType="VARCHAR" property="Z0351" />
+		<result column="Z0315"  jdbcType="INTEGER" property="Z0315" />
+		<result column="Z0342"  jdbcType="VARCHAR" property="Z0342" />
+		<result column="Z0363"  jdbcType="VARCHAR" property="Z0363" />
+		<result column="Z03AD"  jdbcType="VARCHAR" property="Z03AD" />
+		<result column="Z0319"  jdbcType="VARCHAR" property="Z0319" />
+		<result column="Z0336"  jdbcType="VARCHAR" property="Z0336" />
+		<result column="Z0301"  jdbcType="VARCHAR" property="Z0301" />
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 Z0321, Z0351, Z0315, Z0342, Z0363, Z03AD, Z0319,Z0336,Z0301
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM Z03
+		 WHERE Z0321 = #{id}
+	</select>
+
+	<select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.RecInfo">
+		 SELECT
+		  <include refid="Base_Column_List" />
+		 FROM Z03
+        <where>
+            <if test="Z0321 != null and Z0321 !=''">
+                and Z0321 = #{Z0321}
+            </if>
+            <if test="Z0351 != null and Z0351 !=''">
+                and Z0351 = #{Z0351}
+            </if>
+            <if test="Z0319 != null and Z0319 !=''">
+                and Z0319 = #{Z0319}
+            </if>
+        </where>
+	</select>
+
+
+</mapper>

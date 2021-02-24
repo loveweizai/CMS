@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.EngineeringMapper">
+
+	<resultMap id="BaseResultMap" type="net.mingsoft.cms.model.Engineering">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="engineer_name" jdbcType="VARCHAR" property="engineerName" />
+		<result column="location" jdbcType="VARCHAR" property="location" />
+		<result column="country" jdbcType="VARCHAR" property="country" />
+		<result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+		<result column="city_id" jdbcType="VARCHAR" property="cityId" />
+		<result column="area_id" jdbcType="VARCHAR" property="areaId" />
+		<result column="winning_time" jdbcType="TIMESTAMP" property="winningTime" />
+		<result column="survey" jdbcType="VARCHAR" property="survey" />
+		<result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+		<result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+		<result column="unit" jdbcType="VARCHAR" property="unit" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="country_id" jdbcType="VARCHAR" property="countryId" />
+		<result column="engineer_no" jdbcType="VARCHAR" property="engineerNo" />
+		<result column="last_date" jdbcType="VARCHAR" property="lastDate" />
+		<result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+		<result column="city_name" jdbcType="VARCHAR" property="cityName" />
+		<result column="area_name" jdbcType="VARCHAR" property="areaName" />
+	</resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	engineer_name,	location,	country,	province_id,	city_id,	area_id,	winning_time,	survey,	start_date,	end_date,	unit,	create_time,	update_time
+		 ,country_id,engineer_no,last_date,province_name,city_name,area_name
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM engineering
+		 WHERE id = #{id}
+	</select>
+
+    <select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.Engineering">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM engineering
+        <where>
+            <if test="engineerName != null and engineerName !=''">
+                and engineer_name like concat('%',#{engineerName},'%')
+            </if>
+            <if test="provinceId != null and provinceId !=''">
+                and province_id = #{provinceId}
+            </if>
+            <if test="cityId != null and cityId !=''">
+                and city_id = #{cityId}
+            </if>
+            <if test="areaId != null and areaId !=''">
+                and area_id = #{areaId}
+            </if>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="countryId != null and countryId !=''">
+                and (country_id is null or country_id = '')
+            </if>
+            <if test="engineerNo != null and engineerNo !=''">
+                and engineer_no = #{engineerNo}
+            </if>
+        </where>
+		order by start_date desc
+    </select>
+
+    <delete id="deleteBatchBySelective" parameterType="java.util.List">
+        delete from engineering
+        where id in
+        <foreach collection="list" item="engineering" index="no" open="("
+                 separator="," close=")">
+            #{engineering.id}
+        </foreach>
+    </delete>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM engineering
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="net.mingsoft.cms.model.Engineering">
+		 INSERT INTO engineering
+ 		(id,engineer_name,location,country,province_id,city_id,area_id,winning_time,survey,start_date,end_date,unit,create_time,update_time,country_id,engineer_no,last_date,province_name,city_name,area_name) 
+		 VALUES 
+ 		(#{id},#{engineerName},#{location},#{country},#{provinceId},#{cityId},#{areaId},#{winningTime},#{survey},#{startDate},#{endDate},#{unit},#{createTime},#{updateTime},#{countryId},#{engineerNo},#{lastDate},#{provinceName},#{cityName},#{areaName}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="net.mingsoft.cms.model.Engineering">
+		 INSERT INTO engineering
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="engineerName != null">
+				 engineer_name,
+			</if>
+			<if test="location != null">
+				 location,
+			</if>
+			<if test="country != null">
+				 country,
+			</if>
+			<if test="provinceId != null">
+				 province_id,
+			</if>
+			<if test="cityId != null">
+				 city_id,
+			</if>
+			<if test="areaId != null">
+				 area_id,
+			</if>
+			<if test="winningTime != null">
+				 winning_time,
+			</if>
+			<if test="survey != null">
+				 survey,
+			</if>
+			<if test="startDate != null">
+				 start_date,
+			</if>
+			<if test="endDate != null">
+				 end_date,
+			</if>
+			<if test="unit != null">
+				 unit,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="countryId != null">
+				 country_id,
+			</if>
+			<if test="engineerNo != null">
+				 engineer_no,
+			</if>
+			<if test="lastDate != null">
+				 last_date,
+			</if>
+			<if test="provinceName != null">
+				 province_name,
+			</if>
+			<if test="cityName != null">
+				 city_name,
+			</if>
+			<if test="areaName != null">
+				 area_name,
+			</if>
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="engineerName!=null">
+				 #{engineerName},
+			</if>
+			<if test="location!=null">
+				 #{location},
+			</if>
+			<if test="country!=null">
+				 #{country},
+			</if>
+			<if test="provinceId!=null">
+				 #{provinceId},
+			</if>
+			<if test="cityId!=null">
+				 #{cityId},
+			</if>
+			<if test="areaId!=null">
+				 #{areaId},
+			</if>
+			<if test="winningTime!=null">
+				 #{winningTime},
+			</if>
+			<if test="survey!=null">
+				 #{survey},
+			</if>
+			<if test="startDate!=null">
+				 #{startDate},
+			</if>
+			<if test="endDate!=null">
+				 #{endDate},
+			</if>
+			<if test="unit!=null">
+				 #{unit},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+			<if test="countryId != null">
+				 #{countryId},
+			</if>
+			<if test="engineerNo != null">
+				 #{engineerNo},
+			</if>
+			<if test="lastDate != null">
+				 #{lastDate},
+			</if>
+			<if test="provinceName != null">
+				 #{provinceName},
+			</if>
+			<if test="cityName != null">
+				 #{cityName},
+			</if>
+			<if test="areaName != null">
+				 #{areaName},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.Engineering">
+		 UPDATE engineering
+ 		 <set> 
+			<if test="engineerName != null">
+				 engineer_name = #{engineerName},
+			</if>
+			<if test="location != null">
+				 location = #{location},
+			</if>
+			<if test="country != null">
+				 country = #{country},
+			</if>
+			<if test="provinceId != null">
+				 province_id = #{provinceId},
+			</if>
+			<if test="cityId != null">
+				 city_id = #{cityId},
+			</if>
+			<if test="areaId != null">
+				 area_id = #{areaId},
+			</if>
+			<if test="winningTime != null">
+				 winning_time = #{winningTime},
+			</if>
+			<if test="survey != null">
+				 survey = #{survey},
+			</if>
+			<if test="startDate != null">
+				 start_date = #{startDate},
+			</if>
+			<if test="endDate != null">
+				 end_date = #{endDate},
+			</if>
+			<if test="unit != null">
+				 unit = #{unit},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="countryId != null">
+				 country_id = #{countryId},
+			</if>
+			<if test="engineerNo != null">
+				 engineer_no = #{engineerNo},
+			</if>
+			<if test="lastDate != null">
+				 last_date = #{lastDate},
+			</if>
+			<if test="provinceName != null">
+				 province_name = #{provinceName},
+			</if>
+			<if test="cityName != null">
+				 city_name = #{cityName},
+			</if>
+			<if test="areaName != null">
+				 area_name = #{areaName},
+			</if>
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.Engineering">
+		 UPDATE engineering
+		 SET 
+			 engineer_name = #{engineerName},
+			 location = #{location},
+			 country = #{country},
+			 province_id = #{provinceId},
+			 city_id = #{cityId},
+			 area_id = #{areaId},
+			 winning_time = #{winningTime},
+			 survey = #{survey},
+			 start_date = #{startDate},
+			 end_date = #{endDate},
+			 unit = #{unit},
+			 create_time = #{createTime},
+			 update_time = #{updateTime}
+		 WHERE id = #{id}
+	</update>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+		 INSERT INTO engineering
+		 (engineer_name,location,country,province_id,city_id,area_id,winning_time,survey,start_date,end_date,unit,create_time,update_time,country_id,engineer_no,last_date)
+		  VALUES 
+		 <foreach collection="list" item="item" index="index" separator=",">
+		 (
+			 #{item.engineerName},
+			 #{item.location},
+			 #{item.country},
+			 #{item.provinceId},
+			 #{item.cityId},
+			 #{item.areaId},
+			 #{item.winningTime},
+			 #{item.survey},
+			 #{item.startDate},
+			 #{item.endDate},
+			 #{item.unit},
+			 #{item.createTime},
+			 #{item.updateTime},
+			 #{item.countryId},
+			 #{item.engineerNo},
+			 #{item.lastDate},
+			 #{item.provinceName},
+			 #{item.cityName},
+			 #{item.areaName}
+		 )
+		 </foreach>
+	</insert>
+
+    <select id="selectBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.Engineering">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM engineering
+        <where>
+            <if test="engineerName != null and engineerName !=''">
+                and engineer_name like concat('%',#{engineerName},'%')
+            </if>
+            <if test="engineerNo != null and engineerNo !=''">
+                and engineer_no = #{engineerNo}
+            </if>
+        </where>
+    </select>
+    
+    <select id="listCityByProvinceId" resultType="java.util.HashMap" parameterType="net.mingsoft.cms.model.Engineering">
+        SELECT
+        city_id as cityId,city_name as cityName
+        FROM engineering
+        <where>
+            <if test="provinceId != null and provinceId !=''">
+                and province_id = #{provinceId}
+            </if>
+        </where>
+        group by city_id,city_name
+    </select>
+</mapper>

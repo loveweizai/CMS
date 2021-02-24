@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.CityDictMapper">
+
+	<resultMap id="BaseResultMap" type="net.mingsoft.cms.model.CityDict">
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="code" jdbcType="VARCHAR" property="code" />
+		<result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	name,	code,	parent_code
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM city_dict
+		 WHERE id = #{id}
+	</select>
+
+	<select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.CityDict">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM city_dict
+        <where>
+            <if test="code != null and code !=''">
+                and code=#{code}
+            </if>
+            <if test="id != null">
+                and id=#{id}
+            </if>
+            <if test="parentCode != null and parentCode !=''">
+                and parent_code=#{parentCode}
+            </if>
+        </where>
+	</select>
+
+    <delete id="deleteBatchBySelective" parameterType="java.util.List">
+        delete from city_dict
+        where id in
+        <foreach collection="list" item="dict" index="no" open="("
+                 separator="," close=")">
+            #{dict.id}
+        </foreach>
+    </delete>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		 DELETE FROM city_dict
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="net.mingsoft.cms.model.CityDict">
+		 INSERT INTO city_dict
+ 		(id,name,code,parent_code) 
+		 VALUES 
+ 		(#{id},#{name},#{code},#{parent_code}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="net.mingsoft.cms.model.CityDict">
+		 INSERT INTO city_dict
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="name != null">
+				 name,
+			</if>
+			<if test="code != null">
+				 code,
+			</if>
+			<if test="parentCode != null">
+				 parent_code,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="name!=null">
+				 #{name},
+			</if>
+			<if test="code!=null">
+				 #{code},
+			</if>
+			<if test="parentCode !=null">
+				 #{parentCode},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.CityDict">
+		 UPDATE city_dict
+ 		 <set> 
+			<if test="name != null">
+				 name = #{name},
+			</if>
+			<if test="code != null">
+				 code = #{code},
+			</if>
+			<if test="parentCode !=null">
+				 parent_code = #{parentCode},
+			</if>
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.CityDict">
+		 UPDATE city_dict
+		 SET 
+			 name = #{name},
+			 code = #{code},
+			 parent_code = #{parentCode}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

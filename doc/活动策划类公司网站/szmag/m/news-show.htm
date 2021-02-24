@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+
+</head>
+<body>
+    <#include "head.htm">
+
+    <article class="am-article am-padding-sm">
+      <div class="am-article-hd">
+        <h1 class="am-article-title">{ms:field.title/}</h1>
+        <p class="am-article-lead">{ms:field.date fmt=YYYY-MM-dd/}</p>
+      </div>
+
+      <div class="am-article-bd">
+        <img src="{ms:global.host/}{ms:field.litpic/}" />
+        {ms:field.content/}
+      </div>
+    </article>
+
+
+    <#include "footer.htm">
+</body>
+</html>

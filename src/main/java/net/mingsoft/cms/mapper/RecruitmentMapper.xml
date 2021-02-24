@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.RecruitmentMapper">
+
+    <resultMap id="BaseResultMap" type="net.mingsoft.cms.model.Recruitment">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+        <result column="location" jdbcType="VARCHAR" property="location" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
+        <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+		 id,	name,	start_date,	location, status,	picture_url,	introduce,	create_time,	update_time
+	</sql>
+
+    <!-- 查询（根据主键ID查询） -->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM recruitment
+        WHERE id = #{id}
+    </select>
+
+    <select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.Recruitment">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM recruitment
+        <where>
+            <if test="name != null and name !=''">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="status != null and status !=''">
+                and status = #{status}
+            </if>
+        </where>
+        order by start_date asc
+    </select>
+
+    <delete id="deleteBatchBySelective" parameterType="java.util.List">
+        delete from recruitment
+        where id in
+        <foreach collection="list" item="recruitment" index="no" open="("
+                 separator="," close=")">
+            #{recruitment.id}
+        </foreach>
+    </delete>
+
+    <!--删除：根据主键ID删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM recruitment
+		 WHERE id = #{id}
+	</delete>
+
+    <!-- 添加 -->
+    <insert id="insert" parameterType="net.mingsoft.cms.model.Recruitment">
+		 INSERT INTO recruitment
+ 		(id,name,start_date,location,status,picture_url,introduce,create_time,update_time)
+		 VALUES 
+ 		(#{id},#{name},#{startDate},#{location},#{status},#{pictureUrl},#{introduce},#{createTime},#{updateTime})
+	</insert>
+
+    <!-- 添加 （匹配有值的字段）-->
+    <insert id="insertSelective" parameterType="net.mingsoft.cms.model.Recruitment">
+        INSERT INTO recruitment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="startDate != null">
+                start_date,
+            </if>
+            <if test="location != null">
+                location,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="pictureUrl != null">
+                picture_url,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+                #{id},
+            </if>
+            <if test="name!=null">
+                #{name},
+            </if>
+            <if test="startDate!=null">
+                #{startDate},
+            </if>
+            <if test="location!=null">
+                #{location},
+            </if>
+            <if test="status!=null">
+                #{status},
+            </if>
+            <if test="pictureUrl!=null">
+                #{pictureUrl},
+            </if>
+            <if test="introduce!=null">
+                #{introduce},
+            </if>
+            <if test="createTime!=null">
+                #{createTime},
+            </if>
+            <if test="updateTime!=null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 修 改-->
+    <update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.Recruitment">
+        UPDATE recruitment
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate},
+            </if>
+            <if test="location != null">
+                location = #{location},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="pictureUrl != null">
+                picture_url = #{pictureUrl},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 修 改-->
+    <update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.Recruitment">
+		 UPDATE recruitment
+		 SET 
+			 name = #{name},
+			 start_date = #{startDate},
+			 location = #{location},
+			 status = #{status},
+			 picture_url = #{pictureUrl},
+			 introduce = #{introduce},
+			 create_time = #{createTime},
+			 update_time = #{updateTime}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+    <!--申明：本模版为仿站，为了保证达到原网站的美观性及保证大家下载过去数据统一只在部分数据做了标签替换，如需全部使用标签，自行在后台创建对应数据进行获取-->
+</head>
+<body>
+    <#include "head.htm">
+
+    <div id="ad"><div><img src="../{ms:global.style/}/images/06835cee45.jpg" /></div></div>
+    <script type="text/javascript" src="../{ms:global.style/}/js/jquery.superslide.2.1.1.source.js"></script>
+    <div id="banner">
+        <div class="bd">
+            <ul>
+                <!---- 获取后台幻灯标签，后台的图不好看，所以隐藏了获取，需要你自己打开就行
+                {ms:arclist typeid=147}
+                <li><img src="[field.litpic/]" /></li>
+                {/ms:arclist}
+                ---->
+                <li><img src="../{ms:global.style/}/images/1f90018a67.jpg" /></li>
+                <li><img src="../{ms:global.style/}/images/aeb9d82297.jpg" /></li>
+            </ul>
+        </div>
+        <div class="hd"><ul></ul></div>
+        <div class="prev"></div>
+        <div class="next"></div>
+    </div>
+    <script>
+    jQuery("#banner").slide({mainCell:".bd ul",titCell:".hd ul",autoPage:"<li></li>",prevCell:".prev",nextCell:".next",trigger:"click",effect:"fold",autoPlay:true,delayTime:1000});
+    </script>
+
+    <div id="index_part">
+        <div class="w1200">
+            <ul class="item">
+                <li class="img"><a href="{ms:global.url/}/61/65/index.html"><img src="../{ms:global.style/}/images/part0.png" /></a></li>
+                <li class="cn">网站设计</li>
+                <li class="en">website design</li>
+            </ul>
+            <ul class="item">
+                <li class="img"><a href="{ms:global.url/}/61/66/index.html"><img src="../{ms:global.style/}/images/part1.png" /></a></li>
+                <li class="cn">手机应用</li>
+                <li class="en">cellphone application</li>
+            </ul>
+            <ul class="item">
+                <li class="img"><a href="{ms:global.url/}/61/67/index.html"><img src="../{ms:global.style/}/images/part2.png" /></a></li>
+                <li class="cn">平面设计</li>
+                <li class="en">graphic design</li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div id="index_news">
+        <div class="w1200">
+            <div class="index_title_w"><font>新闻资讯</font>NEWS</div>
+            <div class="box">
+                <div class="fl bigimg"><img src="../{ms:global.style/}/images/news.jpg" height="350" /><span class="txt"></span></div>
+                <div class="fr list">
+                    <div class="tab" style="display:block">
+                        {ms:arclist typeid=59 size=3}
+                        <ul class="item item_first">
+                            <li class="fl img"><img src="{ms:global.host/}[field.litpic/]" /><span></span></li>
+                            <li class="fr des">
+                                <div class="des_tit"><a href="[field.link/]">[field.title/]</a></div>
+                                <div class="des_brief">[field.descrip/]</div>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                        {/ms:arclist}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="index_mag">
+        <div class="w1200">
+            <div class="box">
+                <div class="brief">我们成立于2013年是一家集高端活动策划、影视制作、空间设计、  展览展示、灯光音响工程等于一体的综合性文化创意服务机构!</div>
+                <div class="tit">MAIN CULTURE</div>
+                <ul class="txt">
+                    <li class="t"> 
+                        {ms:arclist typeid=95}
+                            [field.content/]
+                        {/ms:arclist}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="index_team">
+        <div class="w1200">
+            <div class="index_title"><font>核心团队</font>TEAM</div>
+            <div class="box">
+                <!--为保持网页原效果，下面的为静态内容，可自行获取-->
+                <div id="team_scrol">
+                    <ul class="item">
+                        <li class="name">黄某某</li>
+                        <li class="job">职位:策划执行总监</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_253c1d8a84.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">郑某某</li>
+                        <li class="job">职位:项目总执行</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_38cee79e64.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">曾某某</li>
+                        <li class="job">职位:项目策划主管</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_8c544d98bd.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">陈某某</li>
+                        <li class="job">职位:文案/设计主管</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_1e40a1f8fd.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">李某某</li>
+                        <li class="job">职位:市场部总监</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_6a6b1a7ace.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">张某某</li>
+                        <li class="job">职位:策划设计执行总监</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_38ec53f56f.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">某某</li>
+                        <li class="job">职位:项目公关经理</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_408b04ab9e.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">王某某</li>
+                        <li class="job">职位:3D数字影像主管</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_f1a8986d10.png" /></li>
+                    </ul>
+                                    <ul class="item">
+                        <li class="name">石某某</li>
+                        <li class="job">职位:</li>
+                        <li class="img"><img src="../{ms:global.style/}/images/s_3903950291.png" /></li>
+                    </ul>
+                </div>
+            </div>
+            <cite>
+                <span class="on"></span>
+                <span></span>
+            </cite>
+        </div>
+    </div>
+
+    <div id="index_brand">
+        <div class="w1200">
+            <div class="index_title"><font>品牌客户</font>BRAND CUSTOMERS</div>
+            <ul class="box">
+                <li><a href="http://www.qq.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_67396d92f3.png" /></a></li>
+                <li><a href="http://ieg.tencent.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_24c6c0b554.png" /></a></li>
+                <li><a href="http://www.huawei.com/cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_83627043ed.png" /></a></li>
+                <li><a href="http://www.shenzhenair.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_85c2a2fef9.png" /></a></li>
+                <li><a href="http://www.lufthansa.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_7ec44839ca.png" /></a></li>
+                <li><a href="http://www.evergrande.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_cd0eefa13c.png" /></a></li>
+                <li><a href="http://www.baoneng.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_a8bbbbc324.png" /></a></li>
+                <li><a href="http://www.vanke.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_216e0c2841.png" /></a></li>
+                <li><a href="http://www.coastalcity.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_9fbcf9ff2d.png" /></a></li>
+                <li><a href="http://www.mindray.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_ddb34ee5f8.png" /></a></li>
+                <li><a href="http://www.cnicif.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_6b343d01e2.png" /></a></li>
+                <li><a href="http://www.xiaoniu66.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_52ab7464d2.png" /></a></li>
+                <li><a href="http://www.snibe.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_ccbae77669.png" /></a></li>
+                <li><a href="http://sz.to8to.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_09757e888c.png" /></a></li>
+                <li><a href="http://www.lkccc.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_399575dfff.png" /></a></li>
+                <li><a href="http://olympus-imaging.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_08c4f99b3f.png" /></a></li>
+                <li><a href="http://www.cmbchina.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_6d62c50f9e.png" /></a></li>
+                <li><a href="http://www.ccb.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_f594060791.png" /></a></li>
+                <li><a href="http://www.10086.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_be8a8c1d09.png" /></a></li>
+                <li><a href="http://shop.kexunhk.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_07ff57bc04.png" /></a></li>
+                <li><a href="http://www.ctf.com.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_c289ab7bb0.png" /></a></li>
+                <li><a href="http://www.oppo.com" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_8f9afa0568.png" /></a></li>
+                <li><a href="http://www.mercedes-benz.com.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_d0cceaafee.png" /></a></li>
+                <li><a href="http://www.audi.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_1afe63e6fb.png" /></a></li>
+                <li><a href="http://trumpchi.gacmotor.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_7034f8252d.png" /></a></li>
+                <li><a href="https://shennancircuit.cn.china.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_097ba565e3.png" /></a></li>
+                <li><a href="http://www.hc360.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_599779f3af.png" /></a></li>
+                <li><a href="http://www.oppein.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_ef242eecb7.png" /></a></li>
+                <li><a href="http://www.so.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_ab7a593158.png" /></a></li>
+                <li><a href="http://www.themixc.com/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_1e05e46864.png" /></a></li>
+                <li><a href="http://hybfc.hygroup.cc/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_4900e49d6f.png" /></a></li>
+                <li><a href="http://www.centaline.com.cn/" target="_blank" rel="nofollow"><img src="../{ms:global.style/}/images/s_12aa96749b.png" /></a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+
+    <#include "footer.htm">
+</body>
+</html>

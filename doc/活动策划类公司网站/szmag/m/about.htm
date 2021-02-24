@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+
+</head>
+<body>
+    <#include "head.htm">
+
+    <img src="../{ms:global.style/}/images/mag0.jpg" width="100%" />
+    <img src="../{ms:global.style/}/images/mag1.jpg" width="100%" />
+    <article class="am-article am-padding-sm">
+      <div class="am-article-bd">
+        <img src="{ms:global.host/}{ms:field.litpic/}" />
+        <p class="am-text-sm">{ms:field.descrip/}</p>
+      </div>
+
+      <div class="am-text-center">
+          <h3 class="am-margin-0">主要成员</h3> 
+          <p class="am-margin-0">Major team members</p>
+      </div>
+       
+      <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-4 am-avg-lg-4 am-gallery-bordered am-margin-bottom-sm">
+          <li>
+            <div class="am-gallery-item">
+              <img src="../{ms:global.style/}/images/s_253c1d8a84.png"/>
+              <h3 class="am-gallery-title">黄某某</h3>
+              <div class="am-gallery-desc">职位:策划执行总监</div>
+            </div>
+          </li>
+          <li>
+            <div class="am-gallery-item">
+              <img src="../{ms:global.style/}/images/s_38cee79e64.png"/>
+              <h3 class="am-gallery-title">郑某某</h3>
+              <div class="am-gallery-desc">职位:项目总执行</div>
+            </div>
+          </li>
+          <li>
+            <div class="am-gallery-item">
+              <img src="../{ms:global.style/}/images/s_8c544d98bd.png"/>
+              <h3 class="am-gallery-title">曾某某</h3>
+              <div class="am-gallery-desc">职位:项目策划主管</div>
+            </div>
+          </li>
+          <li>
+            <div class="am-gallery-item">
+              <img src="../{ms:global.style/}/images/s_1e40a1f8fd.png"/>
+              <h3 class="am-gallery-title">陈某某</h3>
+              <div class="am-gallery-desc">职位:文案/设计主管</div>
+            </div>
+          </li>
+      </ul>
+
+      <div class="am-text-center">
+          <h3 class="am-margin-0">公司架构</h3> 
+          <p class="am-margin-0">Structure of company</p>
+      </div>
+      <img src="../{ms:global.style/}/images/mag3.jpg" width="100%" />
+    </article>
+
+
+
+    <#include "footer.htm">
+</body>
+</html>

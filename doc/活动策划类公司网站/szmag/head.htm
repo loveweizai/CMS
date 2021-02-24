@@ -1,0 +1,31 @@
+<div id="header">
+    <div class="w1200">
+        <div class="fl logo"><a href="{ms:global.url/}"><img src="http://cdn.mingsoft.net/images/logo.png" /></a></div>
+        <ul class="fl menu">
+            <li ><a href="{ms:global.url/}"><font>HOME</font>首页</a></li>
+            <li ><a href="{ms:global.url/}/61/index.html"><font>WORKS</font>作品</a></li>
+            <li ><a href="{ms:global.url/}/59/index.html"><font>DYNAMIC</font>动态</a></li>
+            <li ><a href="{ms:global.url/}/93/95/index.html"><font>ABOUT</font>关于</a></li>
+            <li ><a href="{ms:global.url/}/19/141/index.html"><font>CONTACT</font>联系</a></li>
+        </ul>
+        <div class="fr tel"><img src="../{ms:global.style/}/images/tel.png" />0888-8888888</div>
+        <div class="clear"></div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+    $('.menu li').hover(function(){
+        $(this).toggleClass('on');
+    })
+})
+
+$(window).scroll(function(){
+    if($(window).scrollTop()>107){
+        $('#header').addClass('bg_yellow');
+    }else{
+        $('#header').removeClass('bg_yellow');
+    }
+})
+</script>

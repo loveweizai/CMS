@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+    <style type="text/css">
+        .am-gallery-bordered .am-gallery-item img{
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <#include "head.htm">
+
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-gallery-bordered">
+        {ms:arclist ispaging=true}
+        <li>
+            <div class="am-gallery-item">
+                <a href="[field.link/]" class="">
+                    <img src="{ms:global.host/}[field.litpic/]"/>
+                    <h3 class="am-gallery-title">[field.title/]</h3>
+                    <div class="am-gallery-desc">[field.date fmt=YYYY-MM-dd/]</div>
+                </a>
+            </div>
+        </li>
+        {/ms:arclist}
+    </ul>
+
+
+    <#include "footer.htm">
+</body>
+</html>

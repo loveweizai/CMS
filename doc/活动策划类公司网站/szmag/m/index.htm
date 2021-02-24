@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <#include "head-file.htm">
+  <title>{ms:global.name/}</title>
+
+</head>
+<body>
+  <#include "head.htm">
+  <div class="am-alert am-margin-0 sz-theme am-text-center ">
+    <p class="am-margin-0">源于创意，让客户品牌发生最大价值！</p>
+    <p class="am-text-xs am-margin-0">TO MAXIMIZE CUSTOMER BRAND VALUE!</p>
+  </div>
+
+  <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' >
+    <ul class="am-slides">
+      <!---- 获取后台幻灯标签，后台的图不好看，所以隐藏了获取，需要你自己打开就行
+      {ms:arclist typeid=147}
+      <li><img src="[field.litpic/]" /></li>
+      {/ms:arclist}
+      ---->
+      <li><img src="../{ms:global.style/}/images/1f90018a67.jpg" /></li>
+      <li><img src="../{ms:global.style/}/images/aeb9d82297.jpg" /></li>
+    </ul>
+  </div>
+
+
+  <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3 am-avg-md-3 am-avg-lg-4 am-gallery-default am-text-center am-margin-vertical-sm">
+      <li>
+        <div class="am-gallery-item">
+            <a href="{ms:global.url/}/61/65/index.html">
+                <img src="../{ms:global.style/}/images/part0.png" />
+                <h3 class="am-gallery-title">网站设计</h3>
+            </a>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+            <a href="{ms:global.url/}/61/66/index.html">
+                <img src="../{ms:global.style/}/images/part1.png" />
+                <h3 class="am-gallery-title">手机应用</h3>
+            </a>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+            <a href="{ms:global.url/}/61/67/index.html">
+                <img src="../{ms:global.style/}/images/part2.png" />
+                <h3 class="am-gallery-title">平面设计</h3>
+            </a>
+        </div>
+      </li>
+  </ul>
+
+
+  <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+  <!--列表标题-->
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default ">
+      <h2 class="am-titlebar-title sz-color">
+          新闻资讯
+      </h2>
+
+      <nav class="am-titlebar-nav">
+          <a href="{ms:global.url/}/59/index.html" class="sz-color">more &raquo;</a>
+      </nav>
+    </div>
+
+    <div class="am-list-news-bd">
+      <ul class="am-list">
+      
+      {ms:arclist typeid=59 size=4}
+       <!--缩略图在标题左边-->
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-4 am-list-thumb">
+            <a href="[field.link/]" class="sz-color">
+              <img src="{ms:global.host/}[field.litpic/]"/>
+            </a>
+          </div>
+
+          <div class=" am-u-sm-8 am-list-main">
+              <h3 class="am-list-item-hd"><a href="[field.link/]" class="sz-color">[field.title/]</a></h3>
+
+              <div class="am-list-item-text">[field.descrip/]</div>
+
+          </div>
+        </li>
+        {/ms:arclist}
+      </ul>
+    </div>
+
+  </div>
+
+
+  <div data-am-widget="intro" class="am-intro am-cf am-intro-default">
+      <div class="am-intro-hd sz-theme">
+        <h2 class="am-intro-title">MAIN CULTURE</h2>
+        <a class="am-intro-more am-intro-more-top sz-color" href="{ms:global.url/}/93/95/index.html">more &raquo;</a>
+      </div>
+
+      <div class="am-g am-intro-bd">
+         <article data-am-widget="paragraph" class="am-paragraph am-paragraph-default">
+            {ms:arclist typeid=95}
+              [field.descrip/]
+            {/ms:arclist}
+        </article>
+      </div>
+  </div>
+
+  <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default ">
+    <h2 class="am-titlebar-title sz-color">
+        核心团队
+    </h2>
+
+    <nav class="am-titlebar-nav">
+        <a href="{ms:global.url/}/93/95/index.html" class="sz-color">more &raquo;</a>
+    </nav>
+  </div>
+  <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+  am-avg-md-4 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+      <li>
+        <div class="am-gallery-item">
+          <img src="../{ms:global.style/}/images/s_253c1d8a84.png"/>
+          <h3 class="am-gallery-title">黄某某</h3>
+          <div class="am-gallery-desc">职位:策划执行总监</div>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+          <img src="../{ms:global.style/}/images/s_38cee79e64.png"/>
+          <h3 class="am-gallery-title">郑某某</h3>
+          <div class="am-gallery-desc">职位:项目总执行</div>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+          <img src="../{ms:global.style/}/images/s_8c544d98bd.png"/>
+          <h3 class="am-gallery-title">曾某某</h3>
+          <div class="am-gallery-desc">职位:项目策划主管</div>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+          <img src="../{ms:global.style/}/images/s_1e40a1f8fd.png"/>
+          <h3 class="am-gallery-title">陈某某</h3>
+          <div class="am-gallery-desc">职位:文案/设计主管</div>
+        </div>
+      </li>
+  </ul>
+
+
+  <#include "footer.htm">
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+
+</head>
+<body>
+    <#include "head.htm">
+
+    <article class="am-article am-padding-sm">
+      <div class="am-article-hd">
+        <h1 class="am-article-title">联系我们</h1>
+        <p class="am-article-lead">{ms:field.descrip/}</p>
+      </div>
+
+      <div class="am-article-bd">
+        <!--用文字内容标签可获取联系我们信息，但是这个数据不是我的信息我就隐藏了，怕你们找错人 哈哈哈哈{ms:field.content/}-->
+         <p>联系电话：888888<br></p>
+         <p>QQ：946953627</p>
+         <p>邮箱：946953627@qq.com</p>
+         <p>地址：来自火星的程序媛</p>
+      </div>
+    </article>
+    
+    <div class="am-text-center am-text-sm">
+        <img src="../{ms:global.style/}/images/c1943bcb5b.jpg" width="130" />
+        <p>微信扫一下，请作者一杯咖啡吧~</p>
+    </div>
+    <#include "footer.htm">
+</body>
+</html>

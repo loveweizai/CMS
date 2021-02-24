@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+</head>
+<body>
+    <#include "head.htm">
+    <div id="product_list">
+        <div class="pro_cate">
+            <ul class="topcate">
+            	<div class="w1200">
+                    <li class="first on"><a href="{ms:global.url/}/61/65/index.html"><img src="../{ms:global.style/}/images/s_f40c84c8b3.jpg" />网站设计</a></li>
+                    <li class=" "><a href="{ms:global.url/}/61/66/index.html"><img src="../{ms:global.style/}/images/s_27798be185.png" />手机应用</a></li>
+                    <li class=" "><a href="{ms:global.url/}/61/67/index.html"><img src="../{ms:global.style/}/images/s_673cd460ed.png" />平面设计</a></li>
+                    <div class="clear"></div>
+                </div>
+            </ul>
+            <dl class="w1200 subcate">
+                <span class="fr here">您的位置：<a href="{ms:global.url/}">首页</a> &gt; <a href="{ms:field.typelink/}">{ms:field.typetitle/}</a> &gt; <font></font></span>
+            </dl>
+        </div>
+        
+    	<div class="w1200">
+        	        
+            <div class="blank20"></div>
+            
+            <div class="pro_box">
+                {ms:arclist ispaging=true}
+            	<ul class="item">
+                	<li class="img"><a href="[field.link/]"><img src="{ms:global.host/}[field.litpic/]" /><span></span></a></li>
+                    <li class="des"><a href="[field.link/]">[field.title/]</a>[field.typename/]<br />update at [field.date fmt=YYYY-MM-dd/]</li>
+                </ul>
+                {/ms:arclist}
+                <div class="clear"></div>
+
+    			<div id="turn_page">
+                    <a href='{ms:page.pre/}' class='page_button'><</a>&nbsp;
+                    <a href='{ms:page.next/}' class='page_button'>></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <#include "footer.htm">
+</body>
+</html>
+
+    <script type="text/javascript">
+    $(function(){
+    	$('.pro_box ul:not(".big")').hover(function(){
+    		$(this).toggleClass('cur');
+    	})
+    	
+    	$('.ad cite span').hover(function(){
+    		$(this).addClass('on').siblings().removeClass('on');
+    		var k = $(this).index();
+    		$('.ad .box').eq(k).show().siblings('.box').hide();
+    	})
+    })
+    </script>

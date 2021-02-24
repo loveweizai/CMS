@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mingsoft.cms.mapper.RecruitmentInfoMapper">
+
+    <resultMap id="BaseResultMap" type="net.mingsoft.cms.model.RecruitmentInfo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <!--<result column="name" jdbcType="VARCHAR" property="name" />-->
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+        <result column="position" jdbcType="VARCHAR" property="position" />
+        <result column="duty" jdbcType="VARCHAR" property="duty" />
+        <result column="conditionText" jdbcType="VARCHAR" property="condition_text" />
+        <result column="salary" jdbcType="VARCHAR" property="salary" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="recruitment_type" jdbcType="VARCHAR" property="recruitmentType" />
+        <result column="recruitment_code" jdbcType="VARCHAR" property="recruitmentCode" />
+    </resultMap>
+	
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	company_code,	position,	duty,	condition_text,	salary,	number,	status,	create_time,	update_time,recruitment_type,recruitment_code
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM recruitment_info
+		 WHERE id = #{id}
+	</select>
+
+	<select id="listBySelective" resultMap="BaseResultMap" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM recruitment_info
+		<where>
+			<if test="position != null and position !=''">
+				and position like concat('%',#{position},'%')
+			</if>
+			<if test="recruitmentCode != null and recruitmentCode !=''">
+				and recruitment_code=#{recruitmentCode}
+			</if>
+			<if test="recruitmentType != null and recruitmentType !=''">
+				and recruitment_type=#{recruitmentType}
+			</if>
+			<if test="status != null and status !=''">
+				and status=#{status}
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteBatchBySelective" parameterType="java.util.List">
+		delete from recruitment_info
+		where id in
+		<foreach collection="list" item="student" index="no" open="("
+				 separator="," close=")">
+			#{student.id}
+		</foreach>
+	</delete>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM recruitment_info
+		 WHERE id = #{id}
+	</delete>
+
+	<delete id="deleteAll" parameterType="java.lang.Integer">
+		 DELETE FROM recruitment_info
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		 INSERT INTO recruitment_info
+ 		(id,company_code,position,duty,condition_text,salary,number,status,create_time,update_time,recruitment_type,recruitment_code)
+		 VALUES 
+ 		(#{id},#{companyCode},#{position},#{duty},#{conditionText},#{salary},#{number},#{status},#{createTime},#{updateTime},#{recruitmentType},#{recruitmentCode})
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		 INSERT INTO recruitment_info
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="companyCode != null">
+				 company_code,
+			</if>
+			<if test="position != null">
+				 position,
+			</if>
+			<if test="duty != null">
+				 duty,
+			</if>
+			<if test="conditionText != null">
+				condition_text,
+			</if>
+			<if test="salary != null">
+				 salary,
+			</if>
+			<if test="number != null">
+				 number,
+			</if>
+			<if test="status != null">
+				 status,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="recruitmentType != null">
+				 recruitment_type,
+			</if>
+			<if test="recruitmentCode != null">
+				 recruitment_code,
+			</if>
+			
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="companyCode!=null">
+				 #{companyCode},
+			</if>
+			<if test="position!=null">
+				 #{position},
+			</if>
+			<if test="duty!=null">
+				 #{duty},
+			</if>
+			<if test="conditionText!=null">
+				 #{conditionText},
+			</if>
+			<if test="salary!=null">
+				 #{salary},
+			</if>
+			<if test="number!=null">
+				 #{number},
+			</if>
+			<if test="status!=null">
+				 #{status},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+			<if test="recruitmentType!=null">
+				 #{recruitmentType},
+			</if>
+			<if test="recruitmentCode !=null">
+				 #{recruitmentCode},
+			</if>
+			
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		 UPDATE recruitment_info
+ 		 <set> 
+			<if test="companyCode != null">
+				 company_code = #{companyCode},
+			</if>
+			<if test="position != null">
+				 position = #{position},
+			</if>
+			<if test="duty != null">
+				 duty = #{duty},
+			</if>
+			<if test="conditionText != null">
+				condition_text = #{conditionText},
+			</if>
+			<if test="salary != null">
+				 salary = #{salary},
+			</if>
+			<if test="number != null">
+				 number = #{number},
+			</if>
+			<if test="status != null">
+				 status = #{status},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="recruitmentType!=null">
+				 recruitment_type = #{recruitmentType},
+			</if>
+			<if test="recruitmentCode!=null">
+				 recruitment_code = #{recruitmentCode},
+			</if>
+			
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByCode" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		 UPDATE recruitment_info
+ 		 <set>
+			<if test="companyCode != null">
+				 company_code = #{companyCode},
+			</if>
+			<if test="position != null">
+				 position = #{position},
+			</if>
+			<if test="duty != null">
+				 duty = #{duty},
+			</if>
+			<if test="conditionText != null">
+				condition_text = #{conditionText},
+			</if>
+			<if test="salary != null">
+				 salary = #{salary},
+			</if>
+			<if test="number != null">
+				 number = #{number},
+			</if>
+			<if test="status != null">
+				 status = #{status},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="recruitmentType!=null">
+				 recruitment_type = #{recruitmentType},
+			</if>
+ 		 </set>
+		 WHERE recruitment_code = #{recruitmentCode}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="net.mingsoft.cms.model.RecruitmentInfo">
+		 UPDATE recruitment_info
+		 SET 
+			 company_code = #{companyCode},
+			 position = #{position},
+			 duty = #{duty},
+			 condition_text = #{conditionText},
+			 salary = #{salary},
+			 number = #{number},
+			 status = #{status},
+			 recruitment_type = #{recruitmentType},
+			 recruitment_code = #{recruitmentCode},
+			 create_time = #{createTime},
+			 update_time = #{updateTime}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+</head>
+<body>
+    <#include "head.htm">
+
+
+    <div id="contact">
+    	<div class="w1200">
+        	<ul class="item">
+            	<li class="img"><img src="../{ms:global.style/}/images/sz.jpg" /></li>
+                <li class="mag">JOY</li>
+                <li class="addr">{ms:field.descrip/}</li> <!--获取的联系我们栏目的描述内容-->
+
+                <!--现有数据库中电话等信息都在内容中，不好一项一项取出为保证现有样式只做写死，在使用时可获取后台发布的对应内容，不会的扫下面二维码请个咖啡我抽空教教你哈~~~-->
+                <li><img src="../{ms:global.style/}/images/cont_tel.png" />TEL：0888—8888888</li>
+                <li><img src="../{ms:global.style/}/images/cont_mobile.png" />MOBILE：1890000000（某先生）</li>
+                <li><img src="../{ms:global.style/}/images/cont_email.png" />E-MAIL：xiaoxin9401@qq.com</li>
+                <li><img src="../{ms:global.style/}/images/cont_web.png" />WEB : ms.mingsoft.net</li>
+            </ul>
+            <img src="../{ms:global.style/}/images/dt.jpg" style="margin-top: 60px;float: right;" />
+            <div class="clear"></div>
+            <div class="ercode"><img src="../{ms:global.style/}/images/c1943bcb5b.jpg" width="126" /><div class="blank20"></div>微信扫一下，请作者一杯咖啡吧~<br /></div>
+        </div>
+    </div>
+
+    <#include "footer.htm">
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <#include "head-file.htm">
+    <title>{ms:global.name/}</title>
+    <style type="text/css">
+        .am-list-news-default .am-list .am-list-item-desced{
+            border-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <#include "head.htm">
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+        <div class="am-list-news-bd">
+          <ul class="am-list">
+          
+          {ms:arclist ispaging=true}
+            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+              <div class="am-u-sm-4 am-list-thumb">
+                <a href="[field.link/]" class="sz-color">
+                  <img src="{ms:global.host/}[field.litpic/]"/>
+                </a>
+              </div>
+
+              <div class=" am-u-sm-8 am-list-main">
+                  <h3 class="am-list-item-hd"><a href="[field.link/]" class="sz-color">[field.title/]</a></h3>
+
+                  <div class="am-list-item-text">[field.descrip/]</div>
+
+              </div>
+            </li>
+            {/ms:arclist}
+          </ul>
+        </div>
+    </div>
+
+    <#include "footer.htm">
+</body>
+</html>
