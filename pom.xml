@@ -107,52 +107,52 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-all</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-cache</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-config-core</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-config-ogdl</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-config-ogdl</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-config-ogdl</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-guice</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-web</artifactId>
-			<version>1.6.0</version>
+			<version>1.7.1</version>
 		</dependency>
 	</dependencies>
 	<build>
